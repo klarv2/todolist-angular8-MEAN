@@ -2,7 +2,7 @@
   "name": "client",
   "version": "0.0.0",
   "scripts": {
-    "heroku-postbuild": "ng build --prod",
+    "heroku-postbuild": "cd api && npm install && npm run build --prod && npm install && npm run build",
     "ng": "ng",
     "start": "concurrently \"nodemon api/app.js\" \"ng serve\"",
     "build": "ng build",
