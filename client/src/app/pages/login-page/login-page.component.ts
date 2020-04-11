@@ -22,8 +22,6 @@ export class LoginPageComponent implements OnInit {
         this.router.navigate(['/lists']);
       }
       console.log(res);
-      
     });
   }
-
 }

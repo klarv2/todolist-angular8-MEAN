@@ -14,19 +14,18 @@ export class EditTaskComponent implements OnInit {
   taskId: string;
   listId: string;
 
-  
   ngOnInit() {
     this.route.params.subscribe(
       (params: Params) => {
         this.taskId = params.taskId;
         this.listId = params.listId;
       }
-    )
+    );
   }
 
   updateTask(title: string) {
     this.taskService.updateTask(this.listId, this.taskId, title).subscribe(() => {
       this.router.navigate(['/lists', this.listId]);
-    })
+    });
   }
 }
