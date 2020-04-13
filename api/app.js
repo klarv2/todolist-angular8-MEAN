@@ -1,5 +1,4 @@
 const express = require('express');
-const path = require('path');
 const app = express();
 
 const { mongoose } = require('./db/mongoose');
@@ -11,10 +10,6 @@ const { List, Task, User } = require('./db/models');
 
 const jwt = require('jsonwebtoken');
 
-app.use(express.static(__dirname + '/dist/api'));
-app.get('/*', function(req,res) {
-res.sendFile(path.join(__dirname+
-'/dist/api/index.html'));});
 
 /* MIDDLEWARE  */
 
@@ -390,6 +385,6 @@ let deleteTasksFromList = (_listId) => {
 
 
 
-app.listen(process.env.PORT || 8080, () => {
-    console.log("Server is listening");
+app.listen(3000, () => {
+    console.log("Server is listening on port 3000");
 })
