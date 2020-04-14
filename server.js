@@ -16,6 +16,11 @@ const jwt = require('jsonwebtoken');
 
 app.use(express.static('./dist/client'));
 
+app.get('/*', function(req,res) {
+    
+    res.sendFile(path.join(__dirname,'/dist/client/index.html'));
+    });
+
 /* MIDDLEWARE  */
 
 // Load middleware
@@ -124,7 +129,7 @@ app.get('/lists', authenticate, (req, res) => {
     List.find({
         _userId: req.user_id
     }).then((lists) => {
-        res.sendFile(path.join(__dirname,'/dist/client/index.html'));
+       // res.sendFile(path.join(__dirname,'/dist/client/index.html'));
         res.send(lists);
     }).catch((e) => {
         res.send(e);
@@ -392,6 +397,6 @@ let deleteTasksFromList = (_listId) => {
 
 
 
-app.listen(3000, () => {
-    console.log("Server is listening on port 3000");
+app.listen(process.env.PORT || 8080, () => {
+    console.log("Server is listening on port");
 })
